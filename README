@@ -1,0 +1,5 @@
+1. configure your paths in the script
+2. assure that your php interpreter is in /usr/bin or modify the shebang
+3. Copy the script to ~/.gnome2/nautilus-scripts/
+4. browse to your code folder, right click a file ->scripts->compare
+5. fin

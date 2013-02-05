@@ -1,0 +1,26 @@
+#!/usr/bin/php
+<?php 
+/**configuration**************************************************/
+$localPath="/home/ms/workspace/r3";
+$sshPath="/var/www/pearlfection.de/www/htdocs";
+$server="perdix";
+$diffApplication ='diffuse';
+/**configuration**************************************************/
+
+
+
+$str="";
+$file=getcwd().'/'.$argv[1];
+$pattern=str_replace('/','\/',"^$localPath"); 
+if(preg_match("/^$pattern/", $file)){
+	$remoteFile = str_replace($localPath, $sshPath, $file);
+	$cmd="scp $server:$remoteFile /tmp/{$argv[1]}";
+	$str.="PREG MATCH $file to $remoteFile\ncmd:$cmd\n";
+	exec($cmd);
+	$cmdCmp="$diffApplication $file /tmp/{$argv[1]}";
+	exec($cmdCmp);
+} 
+
+
+$file="/tmp/nautilusdiffuse cmp";
+#file_put_contents($file, $str);
